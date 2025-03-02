@@ -1,0 +1,27 @@
+{
+    "name": "ikodes/license-manager",
+    "description": "License management for API integration",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.5",
+        "firebase/php-jwt": "^6.0",
+        "guzzlehttp/guzzle-services": "^1.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "files": ["src/common/Constant.php"],
+        "psr-4": {
+            "Ikodes\\LicenseManager\\": "src/"            
+        },
+        "classmap": [
+            "src/lib/Service.php"            
+        ]
+    },
+    "authors": [
+        {
+            "name": "ikodes team",
+            "email": "ikodes.technology@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
