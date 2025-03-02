@@ -2,29 +2,52 @@
     "name": "ikodes/license-manager",
     "description": "License management for API integration",
     "type": "library",
-    "require": {
-        "php": ">=5.5.0",
-        "guzzlehttp/guzzle": "^6.5",
-        "firebase/php-jwt": "^6.0",
-        "guzzlehttp/guzzle-services": "^1.1"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "keywords": ["license", "api", "license manager", "ikodes"],
+    "homepage": "https://github.com/ikodes/license-manager",
     "license": "MIT",
-    "autoload": {
-        "files": ["src/common/Constant.php"],
-        "psr-4": {
-            "Ikodes\\LicenseManager\\": "src/"            
-        },
-        "classmap": [
-            "src/lib/Service.php"            
-        ]
-    },
     "authors": [
         {
             "name": "ikodes team",
-            "email": "ikodes.technology@gmail.com"
+            "email": "ikodes.technology@gmail.com",
+            "homepage": "https://ikodes.com",
+            "role": "Developer"
         }
     ],
-    "minimum-stability": "stable"
+    "require": {
+        "php": ">=7.1", 
+        "guzzlehttp/guzzle": "^6.5 || ^7.0",
+        "firebase/php-jwt": "^6.0",
+        "guzzlehttp/guzzle-services": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "files": ["src/common/Constant.php"],
+        "psr-4": {
+            "Ikodes\\LicenseManager\\": "src/"
+        },
+        "classmap": [
+            "src/lib/Service.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ikodes\\LicenseManager\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
