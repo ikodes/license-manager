@@ -56,10 +56,8 @@ class LicenseCore {
 
     public function __construct(?string $product_id = null, ?string $api_url = null, ?string $api_key = null)
     {   
-        // $this->api_url = $api_url ?? getenv('API_URL') ?: '//crm.ikodes.net/v1/';
-
+        $this->api_url = $api_url ?? getenv('API_URL') ?: '//crm.ikodes.net/v1/';
         $this->product_id = $product_id ?? getenv('PRODUCT_ID') ?: '05C52105';
-        $this->api_url = $api_url ?? getenv('API_URL') ?: '//licencebox.local.web/';
         $this->api_key = $api_key ?? getenv('API_KEY') ?: '64A9AD39F722B6E29949';
         $this->client = new Client([
             'base_uri' => $this->api_url,
