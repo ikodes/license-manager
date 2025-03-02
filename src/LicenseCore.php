@@ -70,7 +70,6 @@ class LicenseCore {
         return $this->current_version;
     }
 
-
     private function getDataSecure($data){
        return $data;
     }
