@@ -74,8 +74,9 @@ class LicenseCore {
        return $data;
     }
 
-    private function callApi(string $method, string $endpoint, array $data): array
+    public function callApi(string $method, string $endpoint, array $data): array
     {
+       
         try {
             $this_ip = getenv('SERVER_ADDR')?: $_SERVER['SERVER_ADDR']?: $this->get_ip_from_third_party()?: gethostbyname(gethostname());
             $this_server_name = getenv('SERVER_NAME')?: $_SERVER['SERVER_NAME']?: getenv('HTTP_HOST')?: $_SERVER['HTTP_HOST'];
@@ -87,7 +88,7 @@ class LicenseCore {
             $this_url = $this_http_or_https.$this_server_name.$_SERVER['REQUEST_URI'];
             $this->aesKey = bin2hex(random_bytes(32)); 
             $secureBody = $this->getDataSecure(json_encode($data));
-            $response = $this->client->request($method, $endpoint, [
+            $response = $this->client->request($method,$this->api_url.$endpoint, [
                 'body'=>$secureBody,
                 'headers' => [
                     'Content-Type'  => 'application/json',
@@ -99,7 +100,7 @@ class LicenseCore {
                     'IK-SECURE'     => $this->secure,
                     'IK-AES-KEY'    => $this->aesKey, // Ensure this is correct
                 ]
-            ]);
+            ]);            
             return json_decode($response->getBody()->getContents(), true);
         } catch (GuzzleException | Exception $e) {
 
@@ -230,7 +231,7 @@ class LicenseCore {
         $data_array =  array();
         $response = $this->callApi(
             'POST',
-            $this->api_url.'api/check_connection_ext', 
+            'api/check_connection_ext', 
             $data_array
         );
         return $response;
